@@ -1,10 +1,8 @@
 "use strict";
 
 //set the initial conditions of the game
-function init() {
-  let activePlayer, p1Marker, p2Marker;
-}
-init();
+//might need to put this in init function
+let activePlayer, p1Marker, p2Marker;
 
 //start game generates a starting player
 document.getElementById("startGame").addEventListener("click", function () {
@@ -24,10 +22,21 @@ function assignMarkers(activePlayer) {
     prompt("fuck you that wrong, try again");
     assignMarkers(activePlayer);
   }
+
+  let opposite = function (marker) {
+    return marker === "x" ? "o" : "x";
+  };
+
   if (activePlayer === "Player 1") {
     p1Marker = marker;
+    p2Marker = opposite();
+    console.log(p1Marker, p2Marker);
   }
 }
+
+// function assignOpp() {
+//   return marker === "x" ? "o" : "x";
+// }
 
 //ask the first player to select a marker
 
