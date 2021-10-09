@@ -17,20 +17,34 @@ document.getElementById("startGame").addEventListener("click", function () {
 function assignMarkers(activePlayer) {
   let marker = prompt(`${activePlayer} enter X or O`);
   if (marker === "x" || marker === "o") {
-    console.log(`${activePlayer} your marker is ${marker}`);
+    // console.log(`${activePlayer} your marker is ${marker}`);
   } else {
     prompt("fuck you that wrong, try again");
     assignMarkers(activePlayer);
   }
 
   let opposite = function (marker) {
-    return marker === "x" ? "o" : "x";
+    if (marker === "x") {
+      return "o";
+    } else {
+      return "x";
+    }
   };
 
   if (activePlayer === "Player 1") {
     p1Marker = marker;
-    p2Marker = opposite();
-    console.log(p1Marker, p2Marker);
+    p2Marker = opposite(marker);
+    console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+    document.querySelector(
+      ".assigned-marker"
+    ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
+  } else {
+    p1Marker = opposite(marker);
+    p2Marker = marker;
+    console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+    document.querySelector(
+      ".assigned-marker"
+    ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
   }
 }
 
