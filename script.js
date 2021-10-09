@@ -14,12 +14,13 @@ document.getElementById("startGame").addEventListener("click", function () {
   assignMarkers(activePlayer);
 });
 
+//prompts user to select marker and assigns markers to their players
 function assignMarkers(activePlayer) {
   let marker = prompt(`${activePlayer} enter X or O`);
   if (marker === "x" || marker === "o") {
     // console.log(`${activePlayer} your marker is ${marker}`);
   } else {
-    prompt("fuck you that wrong, try again");
+    prompt("Thats wrong, try again");
     assignMarkers(activePlayer);
   }
 
@@ -48,22 +49,25 @@ function assignMarkers(activePlayer) {
   }
 }
 
-// function assignOpp() {
-//   return marker === "x" ? "o" : "x";
-// }
-
-//ask the first player to select a marker
-
-// let marker = function() {
-
-// }
-
-// = prompt(`${activePlayer} please select X or O!`);
-
-// assign an active player
-
 //make the active player switch after someone selects a marker
 
 //set the active player marker to the box that was clicked
+
+let move = function () {
+  console.log();
+};
+// let number = document.querySelector(".box-1").addEventListener("click", move());
+
+document.querySelector(".box-1").addEventListener("click", move);
+document.querySelector(".box-2").addEventListener("click", move);
+document.querySelector(".box-3").addEventListener("click", move);
+//
+
+// document.querySelector(".box").addEventListener("click", function () {
+//   document.querySelector(``);
+// });
+
+// let selection = document.querySelector("box-2").innerHTML();
+// console.log(selection());
 
 //create a score counter for both players
