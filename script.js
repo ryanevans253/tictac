@@ -61,6 +61,12 @@ let move = function () {
 document.querySelector(".box-1").addEventListener("click", move);
 document.querySelector(".box-2").addEventListener("click", move);
 document.querySelector(".box-3").addEventListener("click", move);
+document.querySelector(".box-4").addEventListener("click", move);
+document.querySelector(".box-5").addEventListener("click", move);
+document.querySelector(".box-6").addEventListener("click", move);
+document.querySelector(".box-7").addEventListener("click", move);
+document.querySelector(".box-8").addEventListener("click", move);
+document.querySelector(".box-9").addEventListener("click", move);
 //
 
 // document.querySelector(".box").addEventListener("click", function () {
