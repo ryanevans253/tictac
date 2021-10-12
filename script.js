@@ -69,11 +69,11 @@ document.querySelector(".box-8").addEventListener("click", move);
 document.querySelector(".box-9").addEventListener("click", move);
 //
 
-// document.querySelector(".box").addEventListener("click", function () {
-//   document.querySelector(``);
-// });
+document.querySelector(".box").addEventListener("click", function () {
+  document.querySelector(``);
+});
 
-// let selection = document.querySelector("box-2").innerHTML();
-// console.log(selection());
+let selection = document.querySelector("box-2").innerHTML();
+console.log(selection());
 
-//create a score counter for both players
+create a score counter for both players
