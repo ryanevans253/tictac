@@ -35,3 +35,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.scores {
+  display: flex;
+  justify-content: space-around;
+  padding: 6px;
+}

@@ -3,6 +3,9 @@
 //set the initial conditions of the game
 //might need to put this in init function
 let activePlayer, p1Marker, p2Marker;
+let score = 0; //set both player scores to zero
+let p1Score = 0;
+let p2Score = 0;
 
 //start game generates a starting player
 document.getElementById("startGame").addEventListener("click", function () {
@@ -69,11 +72,22 @@ document.querySelector(".box-8").addEventListener("click", move);
 document.querySelector(".box-9").addEventListener("click", move);
 //
 
-document.querySelector(".box").addEventListener("click", function () {
-  document.querySelector(``);
-});
+// document.querySelector(".box").addEventListener("click", function () {
+//   document.querySelector(``);
+// });
 
-let selection = document.querySelector("box-2").innerHTML();
-console.log(selection());
+// let selection = document.querySelector("box-2").innerHTML();
+// console.log(selection());
 
-create a score counter for both players
+// create a score counter for both players
+
+document.querySelector(".score1").innerHTML = `Player 1 Score: ${p1Score}`;
+document.querySelector(".score2").innerHTML = `Player 1 Score: ${p1Score}`;
+
+function winCounter() {
+  score += 1;
+}
+
+function winCheck() {
+  if ()
+}
