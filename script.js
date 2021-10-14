@@ -91,3 +91,7 @@ function winCounter() {
 function winCheck() {
   if ()
 }
+
+//need to set the scoreboard equal to a position in an array
+
+let scoreList = ['1','2','3','4','5','6','7','8','9'];
