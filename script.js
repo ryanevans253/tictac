@@ -26,6 +26,7 @@ function assignMarkers(activePlayer) {
     prompt("Thats wrong, try again");
     assignMarkers(activePlayer);
   }
+  1;
 
   let opposite = function (marker) {
     if (marker === "x") {
@@ -88,10 +89,12 @@ function winCounter() {
   score += 1;
 }
 
-function winCheck() {
-  if ()
-}
-
 //need to set the scoreboard equal to a position in an array
 
-let scoreList = ['1','2','3','4','5','6','7','8','9'];
+let list = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+function wincheck(move) {
+  if ((list[0] === list[1]) === list[2]) return activePlayer; //top row
+  if ((list[3] === list[4]) === list[5]) return activePlayer; //middle row
+  if ((list[6] === list[7]) === list[8]) return activePlayer; //bottom row
+}
