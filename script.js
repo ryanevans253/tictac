@@ -58,7 +58,8 @@ function assignMarkers(activePlayer) {
 //set the active player marker to the box that was clicked
 
 let move = function () {
-  console.log();
+  console.log("nothing");
+  document.querySelector(".box-1").innerHTML = activePlayer;
 };
 // let number = document.querySelector(".box-1").addEventListener("click", move());
 
@@ -91,7 +92,7 @@ function winCounter() {
 
 //need to set the scoreboard equal to a position in an array
 
-let list = ["1", "1", "1", "4", "4", "4", "7", "8", "9"];
+let list = ["1", "1", "1", "4", "4", "6", "7", "8", "9"];
 
 function wincheck() {
   const winMessage = `Player  has won the game!`;
@@ -109,4 +110,4 @@ function wincheck() {
   // if (list[1] == list[2]) console.log(winMessage);
 }
 
-wincheck();
+document.querySelector("#wincheck").addEventListener("click", wincheck);
