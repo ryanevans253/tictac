@@ -91,10 +91,22 @@ function winCounter() {
 
 //need to set the scoreboard equal to a position in an array
 
-let list = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let list = ["1", "1", "1", "4", "4", "4", "7", "8", "9"];
 
-function wincheck(move) {
-  if ((list[0] === list[1]) === list[2]) return activePlayer; //top row
-  if ((list[3] === list[4]) === list[5]) return activePlayer; //middle row
-  if ((list[6] === list[7]) === list[8]) return activePlayer; //bottom row
+function wincheck() {
+  const winMessage = `Player  has won the game!`;
+  if ((list[0] && list[1]) === list[2]) console.log(winMessage); //top row
+  if ((list[3] && list[4]) === list[5]) console.log(winMessage); //middle row
+  if ((list[6] && list[7]) === list[8]) console.log(winMessage); //bottom row
+
+  if ((list[0] && list[3]) === list[6]) console.log(winMessage); //left column
+  if ((list[1] && list[4]) === list[7]) console.log(winMessage); //center column
+  if ((list[2] && list[5]) === list[8]) console.log(winMessage); //right column
+
+  if ((list[0] && list[4]) === list[8]) console.log(winMessage); //TL to BR
+  if ((list[2] && list[4]) === list[6]) console.log(winMessage); //TR to BL
+  // console.log(list[0], list[1], list[2]);
+  // if (list[1] == list[2]) console.log(winMessage);
 }
+
+wincheck();
