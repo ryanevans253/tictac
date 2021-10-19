@@ -2,14 +2,16 @@
 
 //set the initial conditions of the game
 //might need to put this in init function
-let activePlayer, p1Marker, p2Marker;
+let activePlayer, inactivePlayer, p1Marker, p2Marker;
 let score = 0; //set both player scores to zero
 let p1Score = 0;
 let p2Score = 0;
 
 //start game generates a starting player
 document.getElementById("startGame").addEventListener("click", function () {
-  let activePlayer = Math.random() < 0.5 ? "Player 1" : "Player 2";
+  activePlayer = Math.random() < 0.5 ? "Player 1" : "Player 2";
+  // if (activePlayer === "Player 1") ? inactivePlayer = "Player 2"
+  inactivePlayer = activePlayer === "Player 1" ? "Player 2" : "Player 1";
 
   document.querySelector(
     ".message"
@@ -33,6 +35,7 @@ function assignMarkers(activePlayer) {
     } else {
       return "x";
     }
+    // marker === "x" ? "o" : "x";
   };
 
   if (activePlayer === "Player 1") {
@@ -94,7 +97,7 @@ function winCounter() {
 let list = ["1", "1", "1", "4", "4", "6", "7", "8", "9"];
 
 function wincheck() {
-  const winMessage = `Player  has won the game!`;
+  let winMessage = `Player ${activePlayer} has won the game!`;
   if ((list[0] && list[1]) === list[2]) console.log(winMessage); //top row
   if ((list[3] && list[4]) === list[5]) console.log(winMessage); //middle row
   if ((list[6] && list[7]) === list[8]) console.log(winMessage); //bottom row
@@ -107,6 +110,18 @@ function wincheck() {
   if ((list[2] && list[4]) === list[6]) console.log(winMessage); //TR to BL
   // console.log(list[0], list[1], list[2]);
   // if (list[1] == list[2]) console.log(winMessage);
+  // switchPlayer();
 }
 
 document.querySelector("#wincheck").addEventListener("click", wincheck);
+
+function takeNumber(number) {}
+
+document.querySelector("#switchPlayer").addEventListener("click", switchPlayer);
+
+function switchPlayer() {
+  [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
+  document.querySelector(
+    ".message"
+  ).innerHTML = `It is ${activePlayer}'s turn!`;
+}
