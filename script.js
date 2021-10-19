@@ -24,9 +24,8 @@ function assignMarkers(activePlayer) {
     // console.log(`${activePlayer} your marker is ${marker}`);
   } else {
     prompt("Thats wrong, try again");
-    assignMarkers(activePlayer);
-  }
-  1;
+    // assignMarkers(activePlayer);
+  } // what is this doing here?
 
   let opposite = function (marker) {
     if (marker === "x") {
