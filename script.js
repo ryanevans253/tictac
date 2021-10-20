@@ -62,44 +62,18 @@ function currentPlayerMessage() {
   ).innerHTML = `It is ${activePlayer}'s turn!`;
 }
 
-//make the active player switch after someone selects a marker
-
-//set the active player marker to the box that was clicked
-
 //listens for all boxes clicked. returns
 let boxArray = document.querySelectorAll(".box");
 
 boxArray.forEach((element) =>
   element.addEventListener("click", function () {
-    // element.innerHTML = activePlayer;
-
-    ///// from the switch section
-
     let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
 
-    let activePlayerNum = activePlayer.slice(-1);
-    // // let activePlayerNum = this.innerHTML;
-    // ///
-    let selectedElement = `box-${activePlayerNum}`;
-    // console.log(selectedElement);
-    // console.log(activePlayerNum);
-
-    // document.querySelector("." + selectedElement).innerHTML = this.innerHTML;
-    // document.querySelector(
-    //   ".message"
-    // ).innerHTML = `It is ${activePlayer}'s turn!`;
-    //
-    //
     [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
     element.innerHTML = activemarker;
     currentPlayerMessage();
-
-    // switchPlayer();
   })
 );
-
-// let selection = document.querySelector("box-2").innerHTML();
-// console.log(selection());
 
 // create a score counter for both players
 
