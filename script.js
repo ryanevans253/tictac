@@ -53,6 +53,13 @@ function assignMarkers(activePlayer) {
       ".assigned-marker"
     ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
   }
+  currentPlayerMessage();
+}
+
+function currentPlayerMessage() {
+  document.querySelector(
+    ".message"
+  ).innerHTML = `It is ${activePlayer}'s turn!`;
 }
 
 //make the active player switch after someone selects a marker
@@ -67,10 +74,6 @@ boxArray.forEach((element) =>
     // element.innerHTML = activePlayer;
 
     ///// from the switch section
-    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
-    document.querySelector(
-      ".message"
-    ).innerHTML = `It is ${activePlayer}'s turn!`;
 
     let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
 
@@ -82,20 +85,14 @@ boxArray.forEach((element) =>
     // console.log(activePlayerNum);
 
     // document.querySelector("." + selectedElement).innerHTML = this.innerHTML;
-
-    // document.querySelector(element.innerHTML) = activePlayerNum;
-    console.log(this.innerHTML);
+    // document.querySelector(
+    //   ".message"
+    // ).innerHTML = `It is ${activePlayer}'s turn!`;
     //
     //
-    //
-    //
-    //
-
-    // Just need to make it repeat on click rather than always listening
-    //
-    //
-    //
+    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
     element.innerHTML = activemarker;
+    currentPlayerMessage();
 
     // switchPlayer();
   })
@@ -139,19 +136,3 @@ document.querySelector("#wincheck").addEventListener("click", wincheck);
 function takeNumber(number) {}
 
 document.querySelector("#switchPlayer").addEventListener("click", switchPlayer);
-
-// function switchPlayer() {
-//   [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
-//   document.querySelector(
-//     ".message"
-//   ).innerHTML = `It is ${activePlayer}'s turn!`;
-
-//   console.log(
-//     `active player is ${activePlayer} and inactive is ${inactivePlayer}`
-//   );
-
-//   let activePlayerNum = activePlayer.slice(-1);
-
-//   document.querySelector(`.box-${element}`).innerHTML = activePlayerNum;
-//   console.log(firs);
-// }
