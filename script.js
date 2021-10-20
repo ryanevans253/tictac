@@ -59,31 +59,48 @@ function assignMarkers(activePlayer) {
 
 //set the active player marker to the box that was clicked
 
-let move = function () {
-  document.querySelector(".box-1").innerHTML = "x";
-};
-// let number = document.querySelector(".box-1").addEventListener("click", move());
-
-document.querySelector(".box-1").addEventListener("click", move);
-document.querySelector(".box-2").addEventListener("click", move);
-document.querySelector(".box-3").addEventListener("click", move);
-document.querySelector(".box-4").addEventListener("click", move);
-document.querySelector(".box-5").addEventListener("click", move);
-document.querySelector(".box-6").addEventListener("click", move);
-document.querySelector(".box-7").addEventListener("click", move);
-document.querySelector(".box-8").addEventListener("click", move);
-document.querySelector(".box-9").addEventListener("click", move);
-//
-
+//listens for all boxes clicked. returns
 let boxArray = document.querySelectorAll(".box");
-// boxArray.forEach((element) => console.log(element));
 
 boxArray.forEach((element) =>
   element.addEventListener("click", function () {
+    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
+
     console.log(element.innerHTML);
-    // console.log(element);
-    // console.log(selection);
-    // let selection = document.querySelector;
+
+    // element.innerHTML = activePlayer;
+
+    ///// from the switch section
+    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
+    document.querySelector(
+      ".message"
+    ).innerHTML = `It is ${activePlayer}'s turn!`;
+
+    console.log(
+      `active player is ${activePlayer} and inactive is ${inactivePlayer}`
+    );
+
+    let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
+
+    let activePlayerNum = activePlayer.slice(-1);
+    let selectedElement = `box-${activePlayerNum}`;
+    console.log(selectedElement);
+    console.log(activePlayerNum);
+
+    document.querySelector("." + selectedElement).innerHTML = activePlayerNum;
+    //
+    //
+    //
+    //
+    //
+
+    // Just need to make it repeat on click rather than always listening
+    //
+    //
+    //
+    element.innerHTML = activemarker;
+
+    // switchPlayer();
   })
 );
 
@@ -126,9 +143,18 @@ function takeNumber(number) {}
 
 document.querySelector("#switchPlayer").addEventListener("click", switchPlayer);
 
-function switchPlayer() {
-  [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
-  document.querySelector(
-    ".message"
-  ).innerHTML = `It is ${activePlayer}'s turn!`;
-}
+// function switchPlayer() {
+//   [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
+//   document.querySelector(
+//     ".message"
+//   ).innerHTML = `It is ${activePlayer}'s turn!`;
+
+//   console.log(
+//     `active player is ${activePlayer} and inactive is ${inactivePlayer}`
+//   );
+
+//   let activePlayerNum = activePlayer.slice(-1);
+
+//   document.querySelector(`.box-${element}`).innerHTML = activePlayerNum;
+//   console.log(firs);
+// }
