@@ -60,8 +60,7 @@ function assignMarkers(activePlayer) {
 //set the active player marker to the box that was clicked
 
 let move = function () {
-  console.log("nothing");
-  document.querySelector(".box-1").innerHTML = activePlayer;
+  document.querySelector(".box-1").innerHTML = "x";
 };
 // let number = document.querySelector(".box-1").addEventListener("click", move());
 
@@ -76,9 +75,17 @@ document.querySelector(".box-8").addEventListener("click", move);
 document.querySelector(".box-9").addEventListener("click", move);
 //
 
-// document.querySelector(".box").addEventListener("click", function () {
-//   document.querySelector(``);
-// });
+let boxArray = document.querySelectorAll(".box");
+// boxArray.forEach((element) => console.log(element));
+
+boxArray.forEach((element) =>
+  element.addEventListener("click", function () {
+    console.log(element.innerHTML);
+    // console.log(element);
+    // console.log(selection);
+    // let selection = document.querySelector;
+  })
+);
 
 // let selection = document.querySelector("box-2").innerHTML();
 // console.log(selection());
