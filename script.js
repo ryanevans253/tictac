@@ -41,14 +41,14 @@ function assignMarkers(activePlayer) {
   if (activePlayer === "Player 1") {
     p1Marker = marker;
     p2Marker = opposite(marker);
-    console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+    // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
     document.querySelector(
       ".assigned-marker"
     ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
   } else {
     p1Marker = opposite(marker);
     p2Marker = marker;
-    console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+    // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
     document.querySelector(
       ".assigned-marker"
     ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
@@ -64,10 +64,6 @@ let boxArray = document.querySelectorAll(".box");
 
 boxArray.forEach((element) =>
   element.addEventListener("click", function () {
-    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
-
-    console.log(element.innerHTML);
-
     // element.innerHTML = activePlayer;
 
     ///// from the switch section
@@ -76,18 +72,19 @@ boxArray.forEach((element) =>
       ".message"
     ).innerHTML = `It is ${activePlayer}'s turn!`;
 
-    console.log(
-      `active player is ${activePlayer} and inactive is ${inactivePlayer}`
-    );
-
     let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
 
     let activePlayerNum = activePlayer.slice(-1);
+    // // let activePlayerNum = this.innerHTML;
+    // ///
     let selectedElement = `box-${activePlayerNum}`;
-    console.log(selectedElement);
-    console.log(activePlayerNum);
+    // console.log(selectedElement);
+    // console.log(activePlayerNum);
 
-    document.querySelector("." + selectedElement).innerHTML = activePlayerNum;
+    // document.querySelector("." + selectedElement).innerHTML = this.innerHTML;
+
+    // document.querySelector(element.innerHTML) = activePlayerNum;
+    console.log(this.innerHTML);
     //
     //
     //
