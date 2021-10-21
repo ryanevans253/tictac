@@ -21,6 +21,7 @@ function startMessage() {
     ".message"
   ).innerHTML = `It is ${activePlayer}'s turn!`;
   assignMarkers(activePlayer);
+  initGame();
 }
 
 //
@@ -88,31 +89,29 @@ function currentPlayerMessage() {
 
 function addMarkerToBoard(marker, index) {
   board.splice(index, 1, marker);
-  console.log(board);
 }
+let boxArray = document.querySelectorAll(".box"); // listens for all boxes clicked.
 
-//listens for all boxes clicked. returns
-let boxArray = document.querySelectorAll(".box");
+function initGame() {
+  boxArray.forEach((element) =>
+    element.addEventListener("click", function () {
+      if (element.innerHTML === "x" || element.innerHTML === "o") {
+        return; //prevents the box from being changed if it contains a marker
+      }
 
-boxArray.forEach((element) =>
-  element.addEventListener("click", function () {
-    if (element.innerHTML === "x" || element.innerHTML === "o") {
-      return; //prevents the box from being changed if it contains a marker
-    }
+      let boardPosition = element.classList[1].slice(-1);
 
-    let boardPosition = element.classList[1].slice(-1);
-    console.log(boardPosition);
+      let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
+      addMarkerToBoard(activemarker, boardPosition - 1);
+      element.innerHTML = board[boardPosition - 1];
 
-    let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
-    addMarkerToBoard(activemarker, boardPosition - 1);
-    element.innerHTML = board[boardPosition - 1];
+      wincheck();
+      [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
 
-    wincheck();
-    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
-
-    currentPlayerMessage();
-  })
-);
+      currentPlayerMessage();
+    })
+  );
+}
 
 function wincheck() {
   if (board[0] === board[1] && board[1] === board[2]) winGame();
