@@ -7,17 +7,31 @@ let p1Score = 0;
 let p2Score = 0;
 let board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-//start game generates a starting player
-document.getElementById("startGame").addEventListener("click", function () {
+let startButton = document.getElementById("startGame");
+startButton.addEventListener("click", generateRandomFirstPlayer);
+startButton.addEventListener("click", startMessage);
+
+function generateRandomFirstPlayer() {
   activePlayer = Math.random() < 0.5 ? "Player 1" : "Player 2";
   inactivePlayer = activePlayer === "Player 1" ? "Player 2" : "Player 1";
+}
 
+function startMessage() {
   document.querySelector(
     ".message"
   ).innerHTML = `It is ${activePlayer}'s turn!`;
   assignMarkers(activePlayer);
-});
+}
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //prompts user to select marker and assigns markers to their players
 function assignMarkers(activePlayer) {
   let marker = prompt(`${activePlayer} enter X or O`);
@@ -60,6 +74,12 @@ function assignMarkers(activePlayer) {
   currentPlayerMessage();
 }
 
+//
+//
+//
+//
+//
+//
 function currentPlayerMessage() {
   document.querySelector(
     ".message"
