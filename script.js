@@ -6,6 +6,7 @@ let activePlayer, inactivePlayer, p1Marker, p2Marker;
 let score = 0; //set both player scores to zero
 let p1Score = 0;
 let p2Score = 0;
+let board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 //start game generates a starting player
 document.getElementById("startGame").addEventListener("click", function () {
@@ -35,7 +36,6 @@ function assignMarkers(activePlayer) {
     } else {
       return "x";
     }
-    // marker === "x" ? "o" : "x";
   };
 
   if (activePlayer === "Player 1") {
@@ -62,51 +62,64 @@ function currentPlayerMessage() {
   ).innerHTML = `It is ${activePlayer}'s turn!`;
 }
 
+function addMarkerToBoard(marker, index) {
+  board.splice(index, 1, marker);
+  console.log(board);
+}
+
 //listens for all boxes clicked. returns
 let boxArray = document.querySelectorAll(".box");
 
 boxArray.forEach((element) =>
   element.addEventListener("click", function () {
+    if (element.innerHTML === "x" || element.innerHTML === "o") {
+      return; //prevents the box from being changed if it contains a marker
+    }
+
+    ////
+    let boardPosition = element.classList[1].slice(-1);
+    console.log(boardPosition);
+
+    ////
+
     let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
 
-    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
+    // console.log(element.tagName);
+    addMarkerToBoard(activemarker, boardPosition - 1);
+
     element.innerHTML = activemarker;
+    wincheck();
+    [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
+
     currentPlayerMessage();
   })
 );
 
 // create a score counter for both players
 
-document.querySelector(".score1").innerHTML = `Player 1 Score: ${p1Score}`;
-document.querySelector(".score2").innerHTML = `Player 1 Score: ${p1Score}`;
-
-function winCounter() {
-  score += 1;
-}
-
-//need to set the scoreboard equal to a position in an array
-
-let list = ["1", "1", "1", "4", "4", "6", "7", "8", "9"];
-
 function wincheck() {
-  let winMessage = `Player ${activePlayer} has won the game!`;
-  if ((list[0] && list[1]) === list[2]) console.log(winMessage); //top row
-  if ((list[3] && list[4]) === list[5]) console.log(winMessage); //middle row
-  if ((list[6] && list[7]) === list[8]) console.log(winMessage); //bottom row
+  if (board[0] === board[1] && board[1] === board[2]) winGame();
+  if (board[3] === board[4] && board[4] === board[5]) winGame();
+  if (board[6] === board[7] && board[7] === board[8]) winGame();
 
-  if ((list[0] && list[3]) === list[6]) console.log(winMessage); //left column
-  if ((list[1] && list[4]) === list[7]) console.log(winMessage); //center column
-  if ((list[2] && list[5]) === list[8]) console.log(winMessage); //right column
+  if (board[0] === board[3] && board[3] === board[6]) winGame();
+  if (board[1] === board[4] && board[4] === board[7]) winGame();
+  if (board[2] === board[5] && board[5] === board[8]) winGame();
 
-  if ((list[0] && list[4]) === list[8]) console.log(winMessage); //TL to BR
-  if ((list[2] && list[4]) === list[6]) console.log(winMessage); //TR to BL
-  // console.log(list[0], list[1], list[2]);
-  // if (list[1] == list[2]) console.log(winMessage);
-  // switchPlayer();
+  if (board[0] === board[4] && board[4] === board[8]) winGame();
+  if (board[2] === board[4] && board[4] === board[6]) winGame();
 }
 
-document.querySelector("#wincheck").addEventListener("click", wincheck);
+function winGame() {
+  let winMessage = `Player ${activePlayer} has won the game!`;
+  activePlayer === "Player 1" ? (p1Score += 1) : (p2Score += 1);
+  updateScore();
+  alert(winMessage);
+}
 
-function takeNumber(number) {}
+function updateScore() {
+  document.querySelector(".score1").innerHTML = `Player 1 Score: ${p1Score}`;
+  document.querySelector(".score2").innerHTML = `Player 2 Score: ${p2Score}`;
+}
 
-document.querySelector("#switchPlayer").addEventListener("click", switchPlayer);
+function runGame() {}
