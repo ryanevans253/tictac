@@ -1,9 +1,8 @@
 "use strict";
 
 //set the initial conditions of the game
-//might need to put this in init function
 let activePlayer, inactivePlayer, p1Marker, p2Marker;
-let score = 0; //set both player scores to zero
+let score = 0;
 let p1Score = 0;
 let p2Score = 0;
 let board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -11,7 +10,6 @@ let board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 //start game generates a starting player
 document.getElementById("startGame").addEventListener("click", function () {
   activePlayer = Math.random() < 0.5 ? "Player 1" : "Player 2";
-  // if (activePlayer === "Player 1") ? inactivePlayer = "Player 2"
   inactivePlayer = activePlayer === "Player 1" ? "Player 2" : "Player 1";
 
   document.querySelector(
@@ -24,11 +22,17 @@ document.getElementById("startGame").addEventListener("click", function () {
 function assignMarkers(activePlayer) {
   let marker = prompt(`${activePlayer} enter X or O`);
   if (marker === "x" || marker === "o") {
-    // console.log(`${activePlayer} your marker is ${marker}`);
   } else {
-    prompt("Thats wrong, try again");
-    // assignMarkers(activePlayer);
-  } // what is this doing here?
+    alert("Thats wrong, try again");
+    assignMarkers(activePlayer);
+  }
+  // let marker;
+  // if (marker !== "x" || marker !== "o") {
+  //   marker = prompt(`${activePlayer} enter X or O`);
+  // } else {
+  //   alert("Thats wrong, try again");
+  //   assignMarkers(activePlayer);
+  // }
 
   let opposite = function (marker) {
     if (marker === "x") {
@@ -76,26 +80,19 @@ boxArray.forEach((element) =>
       return; //prevents the box from being changed if it contains a marker
     }
 
-    ////
     let boardPosition = element.classList[1].slice(-1);
     console.log(boardPosition);
 
-    ////
-
     let activemarker = activePlayer === "Player 1" ? p1Marker : p2Marker;
-
-    // console.log(element.tagName);
     addMarkerToBoard(activemarker, boardPosition - 1);
+    element.innerHTML = board[boardPosition - 1];
 
-    element.innerHTML = activemarker;
     wincheck();
     [activePlayer, inactivePlayer] = [inactivePlayer, activePlayer];
 
     currentPlayerMessage();
   })
 );
-
-// create a score counter for both players
 
 function wincheck() {
   if (board[0] === board[1] && board[1] === board[2]) winGame();
@@ -122,4 +119,9 @@ function updateScore() {
   document.querySelector(".score2").innerHTML = `Player 2 Score: ${p2Score}`;
 }
 
-function runGame() {}
+function resetBoard() {
+  boxArray.forEach((element) => (element.innerHTML = " "));
+  board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+}
+
+document.querySelector("#reset").addEventListener("click", resetBoard);
