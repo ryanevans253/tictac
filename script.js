@@ -34,7 +34,6 @@ function assignMarkers(activePlayer) {
     p1Marker =
       activePlayer === "Player 1" ? selectedMarker : opposite(selectedMarker);
     p2Marker = opposite(p1Marker);
-    console.log(p1Marker, p2Marker);
     startMessage();
   }
 }
@@ -107,6 +106,10 @@ function updateScore() {
 function resetBoard() {
   boxArray.forEach((element) => (element.innerHTML = " "));
   board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+}
+
+function resetGame() {
+  //reset all functions here.
 }
 
 document.querySelector("#reset").addEventListener("click", resetBoard);
