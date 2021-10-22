@@ -1,7 +1,7 @@
 "use strict";
 
 //set the initial conditions of the game
-let activePlayer, inactivePlayer, p1Marker, p2Marker;
+let activePlayer, inactivePlayer, selectedMarker, p1Marker, p2Marker;
 let score = 0;
 let p1Score = 0;
 let p2Score = 0;
@@ -9,71 +9,129 @@ let board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 let startButton = document.getElementById("startGame");
 startButton.addEventListener("click", generateRandomFirstPlayer);
-startButton.addEventListener("click", startMessage);
+// startButton.addEventListener("click", startMessage);
 
 function generateRandomFirstPlayer() {
   activePlayer = Math.random() < 0.5 ? "Player 1" : "Player 2";
   inactivePlayer = activePlayer === "Player 1" ? "Player 2" : "Player 1";
+  assignMarkers(activePlayer);
 }
 
 function startMessage() {
   document.querySelector(
     ".message"
   ).innerHTML = `It is ${activePlayer}'s turn!`;
-  assignMarkers(activePlayer);
+  // assignMarkers(activePlayer);
+  // opposite(selectedMarker);
   initGame();
 }
+//
+//working copy of rebuild:
+// function assignMarkers(activePlayer) {
+//   let selectedMarker = prompt(`${activePlayer} enter X or O`);
+//   if (selectedMarker === null) return;
+//   if (selectedMarker != "x" && selectedMarker != "o") {
+//     alert("please try again");
+//     assignMarkers(activePlayer);
+//   } else {
+//     return selectedMarker;
+//   }
+// }
 
 //
 //
+////rebuilding marker assignment
+function assignMarkers(activePlayer) {
+  let selectedMarker = prompt(`${activePlayer} enter X or O`);
+  if (selectedMarker === null) return;
+  if (selectedMarker != "x" && selectedMarker != "o") {
+    alert("please try again");
+    assignMarkers(activePlayer);
+  } else {
+    p1Marker =
+      activePlayer === "Player 1" ? selectedMarker : opposite(selectedMarker);
+    p2Marker = opposite(p1Marker);
+    console.log(p1Marker, p2Marker);
+    startMessage();
+  }
+}
+//function opposite(x, player1)
+// function opposite(selectedMarker, activePlayer) {
+//   // let newMarker === "x" ? "o" : "x";wtf is going on here?
+
+//   p1Marker = activePlayer === "Player 1" ? selectedMarker : opposite(newMarker);
+//   p2Marker =
+//     activePlayer === "Player 1" ? opposite(selectedMarker) : selectedMarker;
+// }
+
+// let opposite = (selectedMarker === "x" ? "o" : "x";
+
+function opposite(selectedMarker) {
+  if (selectedMarker === "x") {
+    return "o";
+  } else {
+    return "x";
+  }
+}
+//   if (activePlayer === "Player 1") {
+//     p1Marker = selectedMarker;
+//     p2Marker = opposite(selectedMarker);
+//     // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+//     document.querySelector(
+//       ".assigned-marker"
+//     ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
+//   } else {
+//     p1Marker = opposite(selectedMarker);
+//     p2Marker = selectedMarker;
+//     // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+//     document.querySelector(
+//       ".assigned-marker"
+//     ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
+//   }
+// }
+// currentPlayerMessage();
+
 //
-//
+//end of rebuild
 //
 //
 //
 //
 //
 //prompts user to select marker and assigns markers to their players
-function assignMarkers(activePlayer) {
-  let marker = prompt(`${activePlayer} enter X or O`);
-  if (marker === "x" || marker === "o") {
-  } else {
-    alert("Thats wrong, try again");
-    assignMarkers(activePlayer);
-  }
-  // let marker;
-  // if (marker !== "x" || marker !== "o") {
-  //   marker = prompt(`${activePlayer} enter X or O`);
-  // } else {
-  //   alert("Thats wrong, try again");
-  //   assignMarkers(activePlayer);
-  // }
+// function assignMarkers(activePlayer) {
+//   let marker = prompt(`${activePlayer} enter X or O`);
+//   if (marker === "x" || marker === "o") {
+//   } else {
+//     alert("Thats wrong, try again");
+//     assignMarkers(activePlayer);
+//   }
 
-  let opposite = function (marker) {
-    if (marker === "x") {
-      return "o";
-    } else {
-      return "x";
-    }
-  };
+//   let opposite = function (marker) {
+//     if (marker === "x") {
+//       return "o";
+//     } else {
+//       return "x";
+//     }
+//   };
 
-  if (activePlayer === "Player 1") {
-    p1Marker = marker;
-    p2Marker = opposite(marker);
-    // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
-    document.querySelector(
-      ".assigned-marker"
-    ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
-  } else {
-    p1Marker = opposite(marker);
-    p2Marker = marker;
-    // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
-    document.querySelector(
-      ".assigned-marker"
-    ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
-  }
-  currentPlayerMessage();
-}
+//   if (activePlayer === "Player 1") {
+//     p1Marker = marker;
+//     p2Marker = opposite(marker);
+//     // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+//     document.querySelector(
+//       ".assigned-marker"
+//     ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
+//   } else {
+//     p1Marker = opposite(marker);
+//     p2Marker = marker;
+//     // console.log(`player 1 marker is ${p1Marker} and p2 is ${p2Marker}`);
+//     document.querySelector(
+//       ".assigned-marker"
+//     ).innerHTML = `Player 1 marker is: ${p1Marker} and Player 2 is: ${p2Marker}`;
+//   }
+//   currentPlayerMessage();
+// }
 
 //
 //
