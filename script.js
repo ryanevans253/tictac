@@ -113,3 +113,8 @@ function resetGame() {
 }
 
 document.querySelector("#reset").addEventListener("click", resetBoard);
+
+////////////////////
+//testing modal window for reset game
+
+// document.querySelector("#resetBoard").addEventListener("click", resetBoard());
