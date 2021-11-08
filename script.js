@@ -55,7 +55,6 @@ function currentPlayerMessage() {
 function addMarkerToBoard(marker, index) {
   board.splice(index, 1, marker);
 }
-// let boxArray = document.querySelectorAll(".box"); // listens for all boxes clicked.
 
 function initGame() {
   boxArray.forEach((element) =>
@@ -113,8 +112,3 @@ function resetGame() {
 }
 
 document.querySelector("#reset").addEventListener("click", resetBoard);
-
-////////////////////
-//testing modal window for reset game
-
-// document.querySelector("#resetBoard").addEventListener("click", resetBoard());

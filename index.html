@@ -18,7 +18,8 @@
         <div class="header-text">
           <h1>Welcome to Tic Tac Toe</h1>
           <h3 class="message">
-            Press <button id="startGame">Start</button> to begin!
+            Press <button id="startGame" class="btn-success">Start</button> to
+            begin!
           </h3>
           <p class="assigned-marker"></p>
         </div>
@@ -27,7 +28,6 @@
           <div class="score2">Player 2 Score:</div>
         </div>
       </div>
-
       <div class="game-board">
         <div class="box box-1"></div>
         <div class="box box-2"></div>
@@ -40,53 +40,15 @@
         <div class="box box-9"></div>
       </div>
 
-      <button id="reset">Reset Board</button>
-      <!-- all this section below is the test modal for resetting.it's all new and deletable -->
-      <!-- Button trigger modal -->
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Launch demo modal
-      </button>
+      <button id="reset" class="btn-primary">New Game</button>
 
-      <!-- Modal -->
       <div
         class="modal fade"
         id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      ></div>
 
       <!-- end of test section -->
     </div>
