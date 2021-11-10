@@ -107,8 +107,4 @@ function resetBoard() {
   board = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 }
 
-function resetGame() {
-  //reset all functions here.
-}
-
 document.querySelector("#reset").addEventListener("click", resetBoard);
